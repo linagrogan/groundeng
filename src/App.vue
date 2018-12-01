@@ -1,6 +1,6 @@
 <template>
   <div>
-    <main-menu></main-menu>
+    <main-menu class="mb-3"></main-menu>
     <b-container>
       <router-view>
         <!-- router -->

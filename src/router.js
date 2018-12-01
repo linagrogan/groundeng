@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 // import Dashboard from './components/Dashboard'
 // import Login from './components/Login'
-import SignUp from './components/SignUp'
+import SignUp from './components/Auth'
 import Play from './components/Play'
 import Welcome from './components/Welcome'
 // import NotFound from './components/NotFound'
@@ -20,7 +20,7 @@ export default new Router({
     //   component: Login
     // },
     {
-      path: '/signup',
+      path: '/auth',
       component: SignUp
     }, {
       path: '/play',
