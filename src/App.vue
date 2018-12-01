@@ -1,21 +1,23 @@
 <template>
-  <b-container>
-    <b-jumbotron header="Lorem Ipsum">
-      <p>Lorem ipsum dolor sit amet.</p>
-      <b-btn variant="primary" href="#">Lorem</b-btn>
-    </b-jumbotron>
-    <router-view>
-      <!-- router -->
-    </router-view>
-  </b-container>
+  <div>
+    <main-menu></main-menu>
+    <b-container>
+      <router-view>
+        <!-- router -->
+      </router-view>
+    </b-container>
+  </div>
 </template>
 
 <script>
-export default {
-  data () {
-    return {
+import MainMenu from './components/MainMenu'
 
-    }
+export default {
+  components: {
+    'main-menu': MainMenu
+  },
+  data() {
+    return {}
   }
 }
 </script>

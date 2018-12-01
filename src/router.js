@@ -3,16 +3,18 @@ import Router from 'vue-router'
 // import Dashboard from './components/Dashboard'
 // import Login from './components/Login'
 import SignUp from './components/SignUp'
+import Play from './components/Play'
+import Welcome from './components/Welcome'
 // import NotFound from './components/NotFound'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
-    // {
-    //   path: '/',
-    //   component: Dashboard
-    // },
+    {
+      path: '/',
+      component: Welcome
+    },
     // {
     //   path: '/login',
     //   component: Login
@@ -20,6 +22,9 @@ export default new Router({
     {
       path: '/signup',
       component: SignUp
+    }, {
+      path: '/play',
+      component: Play
     },
     // {
     //   path: '/404',
