@@ -1,8 +1,7 @@
 <template>
   <div>
-    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-      <b-form-group label="Email address:"
-                    description="We won't send you and spam.">
+    <b-form @submit="onSubmit">
+      <b-form-group label="Email address:">
         <b-form-input type="email"
                       v-model="form.email"
                       required
@@ -11,59 +10,43 @@
       </b-form-group>
       <b-form-group label="Password:">
         <b-form-input type="password"
-                      v-model="form.email"
+                      v-model="form.password"
                       required
                       placeholder="Enter password">
         </b-form-input>
       </b-form-group>
-      <b-form-group id="exampleGroup4">
-        <b-form-checkbox-group v-model="form.checked" id="exampleChecks">
-          <b-form-checkbox value="that">Keep me signed in</b-form-checkbox>
-        </b-form-checkbox-group>
-      </b-form-group>
-      <b-button type="submit" variant="primary">Login</b-button>
+      <b-button type="submit" variant="primary">
+        {{noAccount ? 'Register' : 'Log in'}}
+      </b-button>
     </b-form>
   </div>
 </template>
 
 <script>
 /****
- * Этот компонент служит и для регистрации, и для входа.
+ * Этот компонент служит и для регистрации, и для входа в аккаунт.
  * Поведение меняется в зависимости от того, какой маршрут сейчас активен
- * в $route.path
+ * в $route.path, signup или signin
  ****/
 
 export default {
-  data () {
+  data() {
     return {
       form: {
         email: '',
-        name: '',
-        food: null,
-        checked: []
-      },
-      foods: [
-        { text: 'Select One', value: null },
-        'Carrots', 'Beans', 'Tomatoes', 'Corn'
-      ],
-      show: true
+        password: ''
+      }
+    }
+  },
+  computed: {
+    noAccount() {
+      return this.$route.path === '/signup'
     }
   },
   methods: {
-    onSubmit (evt) {
+    onSubmit(evt) {
       evt.preventDefault();
       alert(JSON.stringify(this.form));
-    },
-    onReset (evt) {
-      evt.preventDefault();
-      /* Reset our form values */
-      this.form.email = '';
-      this.form.name = '';
-      this.form.food = null;
-      this.form.checked = [];
-      /* Trick to reset/clear native browser form validation state */
-      this.show = false;
-      this.$nextTick(() => { this.show = true });
     }
   }
 }
