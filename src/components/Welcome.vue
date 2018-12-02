@@ -1,13 +1,12 @@
 <template>
-  <b-jumbotron header="Lorem Ipsum" class="mt-3">
+  <b-jumbotron header="GroundEng!">
     <b-img rounded src="https://picsum.photos/1050/200/?image=4" fluid-grow alt="Responsive image"/>
     <p class="mt-3">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      Amet delectus dolores dolorum, ea eum impedit nam, nostrum quae repellendus, sint sit suscipit tempore vero!
-      Atque ea eaque laborum sapiente sed.
+      A place where you can learn English in a weird way! Like SkyEng, but far worse!
+      In order to play, you have got to have an account. Please login or register.
     </p>
-    <b-btn variant="primary" href="#">Lorem</b-btn>
-    <b-btn variant="secondary" href="#">Ipsum</b-btn>
+    <b-btn variant="primary" href="#">I have an account</b-btn>
+    <b-btn variant="secondary" href="#">Registration</b-btn>
   </b-jumbotron>
 </template>
 

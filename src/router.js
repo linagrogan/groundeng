@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 // import Dashboard from './components/Dashboard'
 // import Login from './components/Login'
-import SignUp from './components/Auth'
+import Auth from './components/Auth'
 import Play from './components/Play'
 import Dictionary from './components/Dictionary'
 import Welcome from './components/Welcome'
@@ -21,8 +21,12 @@ export default new Router({
     //   component: Login
     // },
     {
-      path: '/auth',
-      component: SignUp
+      path: '/signup',
+      component: Auth
+    },
+    {
+      path: '/signin',
+      component: Auth
     }, {
       path: '/play',
       component: Play

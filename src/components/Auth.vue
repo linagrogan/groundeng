@@ -1,23 +1,16 @@
 <template>
   <div>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-      <b-form-group id="exampleInputGroup1"
-                    label="Email address:"
-                    label-for="exampleInput1"
-                    description="We'll never share your email with anyone else.">
-        <b-form-input id="exampleInput1"
-                      type="email"
+      <b-form-group label="Email address:"
+                    description="We won't send you and spam.">
+        <b-form-input type="email"
                       v-model="form.email"
                       required
                       placeholder="Enter email">
         </b-form-input>
       </b-form-group>
-      <b-form-group id="exampleInputGroup1"
-                    label="Password:"
-                    label-for="exampleInput1"
-                    description="We'll never share your email with anyone else.">
-        <b-form-input id="exampleInput1"
-                      type="email"
+      <b-form-group label="Password:">
+        <b-form-input type="password"
                       v-model="form.email"
                       required
                       placeholder="Enter password">
@@ -28,13 +21,18 @@
           <b-form-checkbox value="that">Keep me signed in</b-form-checkbox>
         </b-form-checkbox-group>
       </b-form-group>
-      <b-button type="submit" variant="primary">Submit</b-button>
-      <b-button type="reset" variant="danger">Reset</b-button>
+      <b-button type="submit" variant="primary">Login</b-button>
     </b-form>
   </div>
 </template>
 
 <script>
+/****
+ * Этот компонент служит и для регистрации, и для входа.
+ * Поведение меняется в зависимости от того, какой маршрут сейчас активен
+ * в $route.path
+ ****/
+
 export default {
   data () {
     return {
