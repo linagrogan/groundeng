@@ -46,7 +46,7 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      alert(JSON.stringify(this.form));
+      this.$root.$emit('alert', { message: JSON.stringify(this.form)})
     }
   }
 }
