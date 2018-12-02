@@ -5,18 +5,12 @@
       A place where you can learn English in a weird way! Like SkyEng, but far worse!
       In order to play, you have got to have an account. Please login or register.
     </p>
-    <b-btn variant="primary" href="#">I have an account</b-btn>
-    <b-btn variant="secondary" href="#">Registration</b-btn>
+    <b-btn to="/signin" variant="primary">
+      I have an account
+    </b-btn>
+    <b-btn to="/signup" variant="secondary">
+      Registration
+    </b-btn>
   </b-jumbotron>
 </template>
-
-<script>
-export default {
-  name: "Welcome"
-}
-</script>
-
-<style scoped>
-
-</style>
 
