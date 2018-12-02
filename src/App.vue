@@ -1,6 +1,6 @@
 <template>
   <div>
-    <main-menu class="mb-3"></main-menu>
+    <main-menu :userName="user.name" class="mb-3"></main-menu>
     <b-container>
       <b-alert
         variant="warning"
@@ -30,6 +30,9 @@ export default {
   },
   data() {
     return {
+      user: {
+        name: null
+      },
       errorMessage: 'No errors',
       dismissCountDown: 0,
     }

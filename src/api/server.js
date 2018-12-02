@@ -1,6 +1,5 @@
 const express = require('express')
-
-const env = process.env.NODE_ENV || 'production'
+const bodyParser = require('body-parser')
 
 const app = express()
 app.use(bodyParser.json())
@@ -12,4 +11,16 @@ app.get('*', (req, res, next) => {
   res.redirect('/#/404')
 })
 
-module.exports = app
+require('./dbconnection').sync({
+  force: true,
+  logging: true
+})
+  .then(() => {
+    console.log('Connected and synced with PostgreSQL')
+    const port = 1337
+
+    app.listen(port)
+      .on('listening', () => {
+        console.log(`Server started on port ${port}`)
+      })
+  })

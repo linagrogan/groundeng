@@ -13,9 +13,9 @@
       </b-navbar-nav>
 
       <b-navbar-nav class="ml-auto">
-        <b-nav-item-dropdown right>
+        <b-nav-item-dropdown v-if="userName" right>
           <template slot="button-content">
-            <em>linagrogan</em>
+            <em>{{userName}}</em>
           </template>
           <b-dropdown-item href="#">Signout</b-dropdown-item>
         </b-nav-item-dropdown>
@@ -27,7 +27,12 @@
 
 <script>
 export default {
-  name: "MainMenu"
+  props: {
+    userName: {
+      type: String,
+      required: false
+    }
+  }
 }
 </script>
 
