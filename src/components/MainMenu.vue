@@ -17,7 +17,7 @@
           <template slot="button-content">
             <em>{{userName}}</em>
           </template>
-          <b-dropdown-item href="#">Signout</b-dropdown-item>
+          <b-dropdown-item @click="signOut()" href="#">Signout</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
 
@@ -31,6 +31,12 @@ export default {
     userName: {
       type: String,
       required: false
+    }
+  },
+  methods: {
+    signOut() {
+      this.$root.$emit('loggedout')
+      this.$router.push({ path: '/' })
     }
   }
 }

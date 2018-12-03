@@ -36,8 +36,8 @@ export default {
     }
   },
   methods: {
-    onSubmit(evt) {
-      evt.preventDefault();
+    onSubmit(event) {
+      event.preventDefault();
 
       if (this.noAccount) {
         axios
@@ -47,8 +47,9 @@ export default {
           })
           .then(({data}) => {
             localStorage.setItem('sessid', data)
-            // redirect to dashboard
-            console.log("all good", data);
+            localStorage.setItem('login', this.form.email)
+            this.$root.$emit('loggedin')
+            this.$router.push({ path: '/dictionary' })
           })
           .catch(e => {
             console.error(e);

@@ -24,6 +24,18 @@ export default {
       this.dismissCountDown = 5
       this.errorMessage = event.message
     })
+
+    this.$root.$on('loggedin', () => {
+      this.user.name = localStorage.getItem('login')
+    })
+
+    this.$root.$on('loggedout', () => {
+      this.user.name = null
+      localStorage.removeItem('login')
+      localStorage.removeItem('sessid')
+    })
+
+    this.user.name = localStorage.getItem('login')
   },
   components: {
     MainMenu
