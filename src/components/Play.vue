@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>
-      Игра началась!
+      Игра началась! (нет)
     </h1>
     <b-progress :value="80" variant="primary" class="mb-3"
     ></b-progress>

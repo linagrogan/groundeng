@@ -1,6 +1,5 @@
 <template>
   <div>
-    <b-btn variant="success" @click="addWord()">Add</b-btn>
     <b-modal centered v-model="modal.show" @ok="handleOk" :title="modal.editing ? 'Edit' : 'Add'">
       <form>
         <b-form-group label="English">
@@ -16,6 +15,7 @@
         </b-form-group>
       </form>
     </b-modal>
+    <b-btn class="mb-3" variant="success" @click="addWord()">Add</b-btn>
     <b-list-group>
       <b-list-group-item
         v-for="(word, index) in words"
@@ -25,8 +25,8 @@
         class="flex-column align-items-start"
       >
         <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">{{word.eng}}</h5>
-          <b-button @click.stop.prevent="deleteWord(word.eng)" variant="danger">Delete</b-button>
+          <h5>{{word.eng}}</h5>
+          <b-button @click.stop.prevent="deleteWord(word.eng)" variant="outline-danger" size="sm">Delete</b-button>
         </div>
         <p class="mb-1">{{word.rus}}</p>
       </b-list-group-item>
@@ -80,6 +80,10 @@ export default {
       this.modal.show = true;
     },
     deleteWord(eng) {
+      if (!confirm('Are you sure?')) {
+        return
+      }
+
       axios
         .delete("/api/words/" + eng, {
           headers: {
