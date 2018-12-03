@@ -45,8 +45,10 @@ export default {
             login: this.form.email,
             password: this.form.password
           })
-          .then(() => {
-            console.log("all good");
+          .then(({data}) => {
+            localStorage.setItem('sessid', data)
+            // redirect to dashboard
+            console.log("all good", data);
           })
           .catch(e => {
             console.error(e);
