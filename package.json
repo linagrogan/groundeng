@@ -3,7 +3,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "predev:server": "docker run --rm --name pg-docker -e POSTGRES_PASSWORD=docker -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres:9.6-alpine",
+    "postgres": "docker run --rm --name pg-docker -e POSTGRES_PASSWORD=docker -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres:9.6-alpine",
     "dev:server": "cross-env NODE_ENV=development DB_URI=postgres://postgres:docker@localhost:5432/postgres node src/api/server",
     "dev:client": "cross-env NODE_ENV=development webpack-dev-server --open 'Google Chrome' --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
