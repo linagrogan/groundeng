@@ -1,4 +1,5 @@
 const User = require('./models/user')
+const Word = require('./models/word')
 const Session = require('./models/session')
 
 module.exports = {
@@ -15,16 +16,24 @@ module.exports = {
       })
       .catch(next);
   },
-  addWord() {
+  addWord(req, res, next) {
+    const eng = req.body.eng.toLowerCase();
+    const rus = req.body.rus.toLowerCase();
+    const details = req.body.details;
+
+    Word.create({ eng, rus, details, addedBy: res.locals.login })
+      .then(() => {
+        res.status(200).end()
+      })
+      .catch(next)
+  },
+  getWord(req, res, next) {
 
   },
-  getWord() {
+  deleteWord(req, res, next) {
 
   },
-  deleteWord() {
-
-  },
-  updateWord() {
+  updateWord(req, res, next) {
 
   },
   createSession(req, res, next) {
@@ -37,7 +46,7 @@ module.exports = {
           return Session.create({ owner: login });
         }
       })
-      .then(({id}) => {
+      .then(({ id }) => {
         res.status(200).send(id)
       })
       .catch(next)

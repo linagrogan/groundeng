@@ -5,6 +5,8 @@ module.exports = (req, res, next) => {
 
   Session.findByPk(sessionId)
     .then(session => {
+      res.locals.login = session.owner
+
       next()
     })
     .catch(next)
