@@ -11,6 +11,10 @@ const schema = {
   rus: {
     type: Sequelize.TEXT,
     allowNull: false
+  },
+  details: {
+    type: Sequelize.TEXT,
+    allowNull: true
   }
 }
 
