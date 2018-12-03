@@ -2,18 +2,19 @@ const router = require('express').Router()
 const User = require('./models/user')
 
 router.post('/users', (req, res, next) => {
-  User.create({
-    login: 'asdf', password: 'asdfasf'
-  })
-    .then(({ login }) => {
-      console.log(login)
-      res.status(200).json({
-        login
-      })
+  const login = req.body.login.toLowerCase()
+  const password = req.body.password
+
+  User.create({login, password})
+    .then(() => {
+      res.status(200).end()
     })
     .catch(next)
 })
 
-// require('./reporters')(router)
+router.use((err, req, res, next) => {
+  console.error('err')
+  res.status(500).json(err)
+})
 
 module.exports = router

@@ -12,8 +12,8 @@ app.get('*', (req, res, next) => {
 })
 
 require('./dbconnection').sync({
-  force: true,
-  logging: true
+  force: false,
+  // logging: false
 })
   .then(() => {
     console.log('Connected and synced with PostgreSQL')
