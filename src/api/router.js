@@ -26,6 +26,7 @@ router.use(auth)
  * WORDS
  */
 router.post('/words', controllers.addWord)
+router.get('/words', controllers.listWords)
 router.route('/words/:word')
   .get(controllers.getWord)
   .delete(controllers.deleteWord)

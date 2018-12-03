@@ -26,6 +26,13 @@ module.exports = {
       })
       .catch(next)
   },
+  listWords(req, res, next) {
+    Word.findAll({ where: { addedBy: res.locals.login } })
+      .then(words => {
+        res.status(200).send(words)
+      })
+      .catch(next)
+  },
   getWord(req, res, next) {
     const eng = req.params.word;
 
