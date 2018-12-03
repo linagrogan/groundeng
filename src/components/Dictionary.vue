@@ -8,9 +8,6 @@
         <b-form-group label="Russian">
           <b-form-input type="text" placeholder="Перевод" v-model="modal.rus"></b-form-input>
         </b-form-group>
-        <b-form-group label="Details">
-          <b-form-input type="text" placeholder="(optional)" v-model="modal.details"></b-form-input>
-        </b-form-group>
       </form>
     </b-modal>
     <b-list-group>
@@ -38,20 +35,18 @@ export default {
       words: [
         {
           eng: "dude",
-          rus: "чувак",
-          details: "для обоих полов подходит"
+          rus: "чувак"
         },
         {
           eng: "onion",
-          rus: "лук",
-          details: "который овощ"
+          rus: "лук"
         }
       ],
       modal: {
         show: false,
-        eng: '',
-        rus: '',
-        details: ''
+        eng: "",
+        rus: "",
+        details: ""
       }
     };
   },

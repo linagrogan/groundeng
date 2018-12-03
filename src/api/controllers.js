@@ -19,9 +19,8 @@ module.exports = {
   addWord(req, res, next) {
     const eng = req.body.eng.toLowerCase();
     const rus = req.body.rus.toLowerCase();
-    const details = req.body.details;
 
-    Word.create({ eng, rus, details, addedBy: res.locals.login })
+    Word.create({ eng, rus, addedBy: res.locals.login })
       .then(() => {
         res.status(200).end()
       })
@@ -47,6 +46,19 @@ module.exports = {
   },
   updateWord(req, res, next) {
     const word = req.params.word;
+
+    Word.update({ rus: req.body.rus },
+      {
+        where: {
+          eng: req.params.word,
+          addedBy: res.locals.login
+        }
+      }
+    )
+      .then(updated => {
+        res.status(200).end();
+      })
+      .catch(next)
   },
   createSession(req, res, next) {
     const login = req.body.login.toLowerCase();
