@@ -12,7 +12,7 @@ app.get('*', (req, res, next) => {
 })
 
 require('./dbconnection').sync({
-  force: false,
+  force: true,
   // logging: false
 })
   .then(() => {
