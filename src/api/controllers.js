@@ -28,13 +28,25 @@ module.exports = {
       .catch(next)
   },
   getWord(req, res, next) {
+    const eng = req.params.word;
 
+    Word.findOne({ where: { eng, addedBy: res.locals.login } })
+      .then(word => {
+        res.status(200).send(word);
+      })
+      .catch(next)
   },
   deleteWord(req, res, next) {
+    const eng = req.params.word;
 
+    Word.destroy({ where: { eng, addedBy: res.locals.login } })
+      .then(() => {
+        res.status(200).end();
+      })
+      .catch(next)
   },
   updateWord(req, res, next) {
-
+    const word = req.params.word;
   },
   createSession(req, res, next) {
     const login = req.body.login.toLowerCase();
