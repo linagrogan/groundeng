@@ -48,6 +48,8 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     noInfo: false,
+    compress: true,
+    disableHostCheck: true,
     proxy: [{
       context: ['/api'],
       target: `http://localhost:1337`,
