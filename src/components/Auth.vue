@@ -39,24 +39,21 @@ export default {
     onSubmit(event) {
       event.preventDefault();
 
-      if (this.noAccount) {
-        axios
-          .post(`/api/users`, {
-            login: this.form.email,
-            password: this.form.password
-          })
-          .then(({data}) => {
-            localStorage.setItem('sessid', data)
-            localStorage.setItem('login', this.form.email)
-            this.$root.$emit('loggedin')
-            this.$router.push({ path: '/dictionary' })
-          })
-          .catch(e => {
-            console.error(e);
-            this.$root.$emit('alert', { message: e.message})
-          });
-      }
-
+      axios
+        .post(this.noAccount ? "/api/users" : "/api/sessions", {
+          login: this.form.email,
+          password: this.form.password
+        })
+        .then(({ data }) => {
+          localStorage.setItem("sessid", data);
+          localStorage.setItem("login", this.form.email);
+          this.$root.$emit("loggedin");
+          this.$router.push({ path: "/dictionary" });
+        })
+        .catch(e => {
+          console.error(e);
+          this.$root.$emit("alert", { message: e.message });
+        });
     }
   }
 };
