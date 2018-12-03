@@ -7,12 +7,19 @@ const controllers = require('./controllers')
  */
 router.post('/users', controllers.createUser)
 
+/**
+ * SESSIONS
+ */
+router.post('/sessions', controllers.createSession)
+
 //   _   |~  _
 //  [_]--'--[_]
 //  |'|""`""|'|
 //  | | /^\ | |
 //  |_|_|I|_|_|
-// AUTHORIZATION
+//
+// маршруты ниже требуют авторизации!
+
 router.use(auth)
 
 /**
