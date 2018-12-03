@@ -5,9 +5,8 @@
       <b-alert
         variant="warning"
         :show="dismissCountDown"
-        @dismiss-count-down="countDownChanged">
-        {{errorMessage}}
-      </b-alert>
+        @dismiss-count-down="countDownChanged"
+      >{{errorMessage}}</b-alert>
       <router-view>
         <!-- router -->
       </router-view>
@@ -16,26 +15,26 @@
 </template>
 
 <script>
-import MainMenu from './components/MainMenu'
+import MainMenu from "./components/MainMenu";
 
 export default {
   created() {
-    this.$root.$on('alert', (event) => {
-      this.dismissCountDown = 5
-      this.errorMessage = event.message
-    })
+    this.$root.$on("alert", event => {
+      this.dismissCountDown = 5;
+      this.errorMessage = event.message;
+    });
 
-    this.$root.$on('loggedin', () => {
-      this.user.name = localStorage.getItem('login')
-    })
+    this.$root.$on("loggedin", () => {
+      this.user.name = localStorage.getItem("login");
+    });
 
-    this.$root.$on('loggedout', () => {
-      this.user.name = null
-      localStorage.removeItem('login')
-      localStorage.removeItem('sessid')
-    })
+    this.$root.$on("loggedout", () => {
+      this.user.name = null;
+      localStorage.removeItem("login");
+      localStorage.removeItem("sessid");
+    });
 
-    this.user.name = localStorage.getItem('login')
+    this.user.name = localStorage.getItem("login");
   },
   components: {
     MainMenu
@@ -45,14 +44,14 @@ export default {
       user: {
         name: null
       },
-      errorMessage: 'No errors',
-      dismissCountDown: 0,
-    }
+      errorMessage: "No errors",
+      dismissCountDown: 0
+    };
   },
   methods: {
     countDownChanged(dismissCountDown) {
-      this.dismissCountDown = dismissCountDown
+      this.dismissCountDown = dismissCountDown;
     }
   }
-}
+};
 </script>

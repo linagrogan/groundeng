@@ -26,7 +26,11 @@
       >
         <div class="d-flex w-100 justify-content-between">
           <h5>{{word.eng}}</h5>
-          <b-button @click.stop.prevent="deleteWord(word.eng)" variant="outline-danger" size="sm">Delete</b-button>
+          <b-button
+            @click.stop.prevent="deleteWord(word.eng)"
+            variant="outline-danger"
+            size="sm"
+          >Delete</b-button>
         </div>
         <p class="mb-1">{{word.rus}}</p>
       </b-list-group-item>
@@ -80,8 +84,8 @@ export default {
       this.modal.show = true;
     },
     deleteWord(eng) {
-      if (!confirm('Are you sure?')) {
-        return
+      if (!confirm("Are you sure?")) {
+        return;
       }
 
       axios

@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use('/api', require('./router'))
 
 app.get('*', (req, res, next) => {
-  res.redirect('/#/404')
+  res.redirect('/')
 })
 
 require('./dbconnection').sync({
